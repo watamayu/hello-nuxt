@@ -1,19 +1,10 @@
 
 export default {
-  /*
-  ** Nuxt rendering mode
-  ** See https://nuxtjs.org/api/configuration-mode
-  */
+
   mode: 'universal',
-  /*
-  ** Nuxt target
-  ** See https://nuxtjs.org/api/configuration-target
-  */
+
   target: 'server',
-  /*
-  ** Headers of the page
-  ** See https://nuxtjs.org/api/configuration-head
-  */
+
   head: {
     title: process.env.npm_package_name || '',
     meta: [
@@ -25,36 +16,80 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Global CSS
-  */
+
   css: [
+    'reset.css',
+    'element-ui/lib/theme-chalk/index.css',
   ],
-  /*
-  ** Plugins to load before mounting the App
-  ** https://nuxtjs.org/guide/plugins
-  */
+
   plugins: [
+    '~plugins/element-ui',
   ],
-  /*
-  ** Auto import components
-  ** See https://nuxtjs.org/api/configuration-components
-  */
+
   components: true,
-  /*
-  ** Nuxt.js dev-modules
-  */
+
   buildModules: [
+    // '@nuxtjs/dotenv',
+    // '@nuxtjs/eslint-module',
+    '@nuxtjs/tailwindcss',
   ],
-  /*
-  ** Nuxt.js modules
-  */
+
   modules: [
   ],
-  /*
-  ** Build configuration
-  ** See https://nuxtjs.org/api/configuration-build/
-  */
+
   build: {
-  }
+    // vendor: ['element-ui'],
+
+    // CSSの外部ファイル化
+    extractCSS: true,
+
+    // チャンクの分割設定
+    optimization: {
+      splitChunks: {
+        name: true
+      }
+    },
+
+    // 生成ファイルの命名規則
+    filenames: {
+      app: () => '[name].js',
+      chunk: () => '[name].js',
+      css: () => '[name].css',
+      img: () => '[path][name].[ext]'
+    },
+
+    // TailwindCSSの設定をPostCSSで有効化
+    // postcss: {
+    //   plugins: {
+    //     tailwindcss: 'tailwind.config.js'
+    //   }
+    // },
+
+    // CSS圧縮の設定
+    purgeCSS: {
+      // mode: 'postcss'
+    },
+
+    extend (config, ctx) {
+      // ESlintの実行
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
+    },
+
+  },
+
+  // 静的ファイルとしてビルド時の書き出し先（この場合は`/dist/app/`以下に書き出される）
+   generate: {
+    dir: 'dist/'
+  },
+
+  axios: {
+    baseURL: 'https://fir-test-54c02.firebaseio.com',
+  },
 }
