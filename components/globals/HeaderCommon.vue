@@ -9,6 +9,21 @@
       </li>
     </ul>
 
+    <form action="">
+      <FreeWordSearch :placeholder="placeholder" :classWidth="classWidth" />
+    </form>
+
+    <AppButton :link="link">
+      <span slot="name">ふつーのボタン</span>
+    </AppButton>
+
+     <AppAccentButton>
+      <span slot="name">ログイン</span>
+    </AppAccentButton>
+
+
+
+
     <div class="wrapper">
       <a href="/">
         <img src="~assets/images/logo-purelovers.png"
@@ -20,6 +35,8 @@
       <h1>wwwwwwwwwwww</h1>
       <p>りーど</p>
     </div>
+
+
     <HeaderGuideNav>
       <li slot="navItem"
           v-for="link in navLinks"
@@ -41,16 +58,24 @@
 </template>
 
 <script>
-  import HeaderGuideNav from '~/components/modules/HeaderGuideNav.vue'
-  import iconHome from '~/components/icons/iconHome.vue'
+  import HeaderGuideNav from '~/components/globals/HeaderGuideNav.vue'
+  import FreeWordSearch from '~/components/modules/FreeWordSearch.vue'
+  import AppButton from '~/components/parts/AppButton.vue'
+  import AppAccentButton from '~/components/parts/AppAccentButton.vue'
+  import IconHome from '~/components/icons/IconHome.vue'
 
   export default {
     components: {
       HeaderGuideNav,
-      iconHome,
+      FreeWordSearch,
+      AppButton,
+      IconHome,
     },
     data() {
       return {
+        placeholder: 'フリーワード検索',
+        classWidth: 'w-30',
+        link: '',
         navLinks: [
           { name: 'トップ', path: '/' },
           { name: 'お店検索', path: '/' },
@@ -80,8 +105,20 @@
   .header-common {
     // min-height: 190px;
     border-top-width: 5px;
-    border-color: theme('colors.border-dark-gray');
+    border-color: theme('colors.base');
     @apply relative border-solid bg-white;
+  }
+
+  .header-common::before {
+    content: "";
+  }
+
+  .header-common::after {
+    content: "";
+    width: 45.57%;
+    height: 25px;
+    background-color: theme('colors.base');
+    @apply inline-block absolute top-0 right-0;
   }
 
   .header-common .wrapper {
@@ -89,15 +126,18 @@
     @apply my-0 mx-auto py-16 px-0;
   }
 
+  .header-common form {
+    width: 192px;
+    height: 30px;
+  }
+
   .header-common .region-list {
-    background: #333;
     @apply flex items-center text-white;
   }
 
   .header-common .region-list li {
     @apply border-solid border-l-1 border-white;
   }
-
 
   .header-common .region-list li:first-child {
     @apply border-l-0;

@@ -1,6 +1,6 @@
 <template>
   <ul class="footer-guide-list">
-    <slot name="listItem" />
+    <slot name="guideItem" />
   </ul>
 </template>
 
@@ -16,7 +16,7 @@
   .footer-guide-list /deep/ a {
     height: 24px;
     font-size: theme('fontSize.fz16');
-    color: theme('colors.base');
+    color: theme('colors.accent');
     @apply flex items-center font-bold no-underline;
   }
 </style>

@@ -18,10 +18,12 @@
   }
 </script>
 
-<style lang="scss" scoped>
-  html {
+<style lang="scss">
+  body {
     color: #333;
     font-family: theme('fontFamily.default');
+    word-break: break-word;
+    word-wrap: break-word;
   }
 
   *,

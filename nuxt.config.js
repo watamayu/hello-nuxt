@@ -59,15 +59,15 @@ export default {
     },
 
     // TailwindCSSの設定をPostCSSで有効化
-    // postcss: {
-    //   plugins: {
-    //     tailwindcss: 'tailwind.config.js'
-    //   }
-    // },
+    postcss: {
+      plugins: {
+        tailwindcss: 'tailwind.config.js'
+      }
+    },
 
     // CSS圧縮の設定
     purgeCSS: {
-      // mode: 'postcss'
+      mode: 'postcss'
     },
 
     extend (config, ctx) {
@@ -84,7 +84,7 @@ export default {
 
   },
 
-  // 静的ファイルとしてビルド時の書き出し先（この場合は`/dist/app/`以下に書き出される）
+  // 静的ファイルとしてビルド時の書き出し先（この場合は`/dist/`以下に書き出される）
    generate: {
     dir: 'dist/'
   },

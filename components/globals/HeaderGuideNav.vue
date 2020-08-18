@@ -11,7 +11,7 @@
     min-height: 60px;
     border-bottom-width: 5px;
     border-color: theme('colors.border-dark-gray');
-    background: theme('colors.base');
+    background: theme('colors.accent');
     @apply flex justify-center border-solid ;
   }
 

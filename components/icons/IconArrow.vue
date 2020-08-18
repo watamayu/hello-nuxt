@@ -7,8 +7,6 @@
     :height="height"
   >
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
       d="M9 5L-4.89399e-07 10.1962L-3.51373e-08 -0.196153L9 5Z"
     />
   </svg>
