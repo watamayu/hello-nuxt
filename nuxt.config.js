@@ -70,23 +70,23 @@ export default {
       mode: 'postcss'
     },
 
-    // extend (config, ctx) {
-    //   // ESlintの実行
-    //   if (ctx.isDev && ctx.isClient) {
-    //     config.module.rules.push({
-    //       enforce: 'pre',
-    //       test: /\.(js|vue)$/,
-    //       loader: 'eslint-loader',
-    //       exclude: /(node_modules)/
-    //     })
-    //   }
-    // },
+    extend (config, ctx) {
+      // ESlintの実行
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
+    },
 
   },
 
   // 静的ファイルとしてビルド時の書き出し先（この場合は`/dist/`以下に書き出される）
    generate: {
-    // dir: 'dist'
+    dir: 'dist'
   },
 
   axios: {
