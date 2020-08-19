@@ -1,40 +1,80 @@
 <template>
   <header class="header-common">
 
-    <ul class="region-list">
-      <li v-for="region in regionLinks"
-          :key="region.name"
-      >
-        <a :href="region.path">{{ region.name }}</a>
-      </li>
-    </ul>
+    <div style="display: flex;
+    height: 25px;
+    align-items: center;">
 
-    <form action="">
-      <FreeWordSearch :placeholder="placeholder" :classWidth="classWidth" />
-    </form>
+      <div style="width: 54.43%;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    font-size: 12px;
+    color: #333;">
+        <span style="font-size: 18px;
+    color: #FD306A;
+    font-weight: bold;">1,234</span>店舗
+        <span>1,234,567</span>女の子
+        <span>1,234,567,890</span>口コミ
+      </div>
 
-    <AppButton :link="link">
-      <span slot="name">ふつーのボタン</span>
-    </AppButton>
+      <ul class="region-list">
+        <li v-for="regionLink in regionLinks"
+            :key="regionLink.name"
+        >
+          <a :href="regionLink.path">{{ regionLink.name }}</a>
+        </li>
+      </ul>
 
-     <AppAccentButton>
-      <span slot="name">ログイン</span>
-    </AppAccentButton>
+    </div>
+
+
+
+
+
+
 
 
 
 
     <div class="wrapper">
-      <a href="/">
-        <img src="~assets/images/logo-purelovers.png"
-             alt="風俗情報ぴゅあらば"
-             width="164"
-             height="63"
-        >
-      </a>
-      <h1>wwwwwwwwwwww</h1>
-      <p>りーど</p>
+
+      <ul class="header-side-menu">
+        <li>
+          <NoUnderEighteen />
+        </li>
+        <li>
+          <form action="">
+            <FreeWordSearch :isWidth="isWidth"
+                            :placeholder="placeholder"
+            />
+          </form>
+        </li>
+        <li>
+          <MembersNav />
+        </li>
+      </ul>
+
+      <HeadPrimary>
+        <a slot="image" class="image" href="/">
+          <img src="~assets/images/logo-purelovers.png"
+              alt="風俗情報ぴゅあらば"
+              width="164"
+              height="63"
+          >
+        </a>
+        <template slot="title">
+          【関東】の<br>
+          風俗店情報
+        </template>
+        <p slot="lead" class="lead">
+          h1リード文が入ります。h1リード文が入ります。h1リード文が入ります。h1リード文が入ります。h1リード文が入ります。h1リード文が入ります。h1リード文が入ります。h1リード文が入ります。
+        </p>
+      </HeadPrimary>
+
     </div>
+
 
 
     <HeaderGuideNav>
@@ -60,21 +100,32 @@
 <script>
   import HeaderGuideNav from '~/components/globals/HeaderGuideNav.vue'
   import FreeWordSearch from '~/components/modules/FreeWordSearch.vue'
+  import MembersNav from '~/components/modules/MembersNav.vue'
+  import NoUnderEighteen from '~/components/modules/NoUnderEighteen.vue'
+  import HeadPrimary from '~/components/parts/HeadPrimary.vue'
   import AppButton from '~/components/parts/AppButton.vue'
   import AppAccentButton from '~/components/parts/AppAccentButton.vue'
   import IconHome from '~/components/icons/IconHome.vue'
+  import IconKey from '~/components/icons/IconKey.vue'
+
 
   export default {
     components: {
       HeaderGuideNav,
       FreeWordSearch,
+      MembersNav,
+      NoUnderEighteen,
+      HeadPrimary,
       AppButton,
       IconHome,
+      IconKey,
     },
     data() {
       return {
+        isHead: true,
+        isIcon: true,
+        isWidth: true,
         placeholder: 'フリーワード検索',
-        classWidth: 'w-30',
         link: '',
         navLinks: [
           { name: 'トップ', path: '/' },
@@ -123,7 +174,7 @@
 
   .header-common .wrapper {
     width: theme('width.wrapper-common');
-    @apply my-0 mx-auto py-16 px-0;
+    @apply relative my-0 mx-auto pt-0 pb-16 px-0;
   }
 
   .header-common form {
@@ -132,19 +183,36 @@
   }
 
   .header-common .region-list {
-    @apply flex items-center text-white;
+    @apply relative flex items-center text-white z-10;
   }
 
   .header-common .region-list li {
-    @apply border-solid border-l-1 border-white;
-  }
-
-  .header-common .region-list li:first-child {
-    @apply border-l-0;
+    @apply py-4;
   }
 
   .header-common .region-list a {
     font-size: theme('fontSize.fz12');
-    @apply text-white;
+    @apply px-4 text-white border-solid border-r-1 border-white cursor-pointer ;
+  }
+
+  .header-common .region-list a.active {
+    color: theme('colors.accent');
+  }
+
+  .header-common .region-list a:hover {
+    color: theme('colors.accent');
+  }
+
+  .header-common .region-list li:last-child > a {
+    @apply border-r-0 ;
+  }
+
+  .header-common .header-side-menu {
+    top: 28px;
+    @apply absolute right-0 flex items-center -ml-8 -mb-8;
+  }
+
+  .header-common .header-side-menu li {
+    @apply pl-8 pb-8;
   }
 </style>

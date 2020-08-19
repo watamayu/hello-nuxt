@@ -1,7 +1,7 @@
 <template>
   <p class="free-word-search">
     <FreeWordInput :placeholder="placeholder" />
-    <FreeWordSearchButton :classWidth="classWidth" />
+    <FreeWordSearchButton :isWidth="isWidth" />
   </p>
 </template>
 
@@ -15,8 +15,8 @@
       FreeWordSearchButton,
     },
     props: {
+      isWidth: Boolean,
       placeholder: String,
-      classWidth: String,
     },
   }
 </script>

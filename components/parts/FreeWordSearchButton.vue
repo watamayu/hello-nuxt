@@ -1,7 +1,13 @@
 <template>
   <p class="free-word-search-button">
-    <input type="submit" :class="classWidth" value="">
-    <IconSearch class="icon fill-current" width="22" height="22" />
+    <IconSearch class="icon fill-current"
+                width="22"
+                height="22"
+    />
+    <input type="submit"
+           value=""
+           :class="{ 'w-30' : isWidth }"
+    >
   </p>
 </template>
 
@@ -13,19 +19,23 @@
       IconSearch,
     },
     props: {
-      classWidth: String,
+      isWidth: Boolean,
     },
   }
 </script>
 
 <style lang="scss" scoped>
   .free-word-search-button {
+    background-color: theme('colors.bg-light-blue');
     @apply relative h-full flex items-center justify-center cursor-pointer;
   }
 
   .free-word-search-button input {
-    background-color: theme('colors.bg-icon-search');
-    @apply h-full;
+    @apply relative h-full bg-transparent cursor-pointer z-10;
+  }
+
+  .free-word-search-button input:focus {
+    @apply outline-none;
   }
 
   .free-word-search-button input.w-30 {
@@ -33,9 +43,6 @@
   }
 
   .free-word-search-button .icon {
-    // top: theme('inset.1/2');
-    // left: theme('inset.1/2');
-    // @apply absolute h-full -translate-y-1/2 -translate-x-1/2 text-white;
     @apply absolute h-full text-white;
   }
 </style>

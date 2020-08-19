@@ -1,14 +1,14 @@
 <template>
   <p class="footer-area-index">
-    <span v-if="isIcon">
+    <span v-if="isColon">
       <IconArrow class="icon fill-current"
                  width="12"
                  height="12"
       />
-      <slot name="indexArrow" />:
+      <slot name="colon" />:
     </span>
-    <span v-if="iskako" >
-      【<slot name="index" />】
+    <span v-if="isParentheses" >
+      【<slot name="parentheses" />】
     </span>
   </p>
 </template>
@@ -21,8 +21,8 @@ export default {
     IconArrow,
   },
   props: {
-    isIcon: Boolean,
-    iskako: Boolean,
+    isColon: Boolean,
+    isParentheses: Boolean,
   },
 }
 </script>

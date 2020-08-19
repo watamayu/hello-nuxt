@@ -1,7 +1,7 @@
 <template>
   <ul class="footer-area-list">
-    <slot name="areaIndex" />
-    <slot name="area" />
+    <slot name="index" />
+    <slot name="item" />
   </ul>
 </template>
 
@@ -24,6 +24,10 @@
     color: theme('colors.base');
     border-color: theme('colors.base');
     @apply flex items-center px-4 border-solid border-r-1;
+  }
+
+  .footer-area-list /deep/ li > a:hover {
+    @apply underline;
   }
 
   .footer-area-list /deep/ li:last-child > a {

@@ -22,18 +22,19 @@ module.exports = {
         14: '14px',
         20: '20px',
         24: '24px',
+        36: '36px',
       },
       // 色
       colors: {
         base: '#333333',
         accent: '#FD306A',
-        'button-base': '#E0E0E0',
         'bg-gray': '#EFEFEF',
+        'bg-light-blue': '#47AFFF',
+        'border-horizontalrule': '#D8D8D8',
         'border-light-gray': '#D4D4D4',
-        'border-dark-gray': '#333333',
-        'bg-icon-search': '#47AFFF',
-      },
-      borderColor: {
+        'no-under-eighteen': '#747474',
+
+        'button-base': '#E0E0E0',
       },
       // サイズ
       width: {
@@ -49,11 +50,13 @@ module.exports = {
         fz14: '14px',
         fz16: '16px',
         fz18: '18px',
+        fz20: '20px',
       },
       lineHeight: {
         lh12: '12px',
         lh14: '14px',
         lh16: '16px',
+        lh17: '17px',
         lh18: '18px',
         lh20: '20px',
         lh25: '25px',

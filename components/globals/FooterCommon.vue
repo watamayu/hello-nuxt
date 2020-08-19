@@ -2,28 +2,29 @@
   <footer class="footer-common">
     <div class="wrapper">
       <FooterGuideList>
-        <li slot="guideItem"
-            v-for="link in footerNavLinks"
-            :key="link.name"
+        <li slot="item"
+            v-for="footerNavLink in footerNavLinks"
+            :key="footerNavLink.name"
         >
-          <a :href="link.path">
+          <a :href="footerNavLink.path">
             <IconArrow class="icon fill-current"
                        width="12"
                        height="12"
             />
-            {{ link.name }}
+            {{ footerNavLink.name }}
           </a>
         </li>
       </FooterGuideList>
       <ul class="information-list">
-        <li v-for="info in informationLinks"
-            :key="info.name"
+        <li v-for="informationLink in informationLinks"
+            :key="informationLink.name"
         >
-          <AppAccentButton :link="info.path"
-                           :addClass="info.class"
+          <AppAccentButton :isRounded="isRounded"
+                           :link="informationLink.path"
+                           class="fz16"
           >
             <span slot="name">
-              {{ info.name }}
+              {{ informationLink.name }}
             </span>
           </AppAccentButton>
         </li>
@@ -35,14 +36,14 @@
              :key="area.id"
           >
             <FooterAreaList>
-              <li slot="areaIndex">
-                <FooterAreaIndex :isIcon="isIcon">
-                  <template slot="indexArrow">
+              <li slot="index">
+                <FooterAreaIndex :isColon="isColon">
+                  <template slot="colon">
                     {{ area.region }}
                   </template>
                 </FooterAreaIndex>
               </li>
-              <li slot="area"
+              <li slot="item"
                   v-for="prefecture in area.prefecture"
                   :key="prefecture.id"
               >
@@ -65,16 +66,16 @@
             <FooterAreaList v-for="prefecture in area.prefecture"
                             :key="prefecture.id"
             >
-              <li slot="areaIndex"
+              <li slot="index"
                   class="w-full"
               >
-                <FooterAreaIndex :iskako="iskako">
-                  <template slot="index">
+                <FooterAreaIndex :isParentheses="isParentheses">
+                  <template slot="parentheses">
                     {{ prefecture.name }}
                   </template>
                 </FooterAreaIndex>
               </li>
-              <li slot="area"
+              <li slot="item"
                   v-for="city in prefecture.city"
                   :key="city.name"
               >
@@ -86,8 +87,7 @@
           </template>
         </div>
         <div slot="contents">
-          <div
-               v-for="shop in searchbusiness"
+          <div  v-for="shop in searchShop"
                :key="shop.name"
           >
             <FooterSearchIndex>
@@ -103,14 +103,14 @@
               <FooterAreaList v-for="prefecture in area.prefecture"
                               :key="prefecture.id"
               >
-                <li slot="areaIndex">
-                  <FooterAreaIndex :iskako="iskako">
-                    <template slot="index">
+                <li slot="index">
+                  <FooterAreaIndex :isParentheses="isParentheses">
+                    <template slot="parentheses">
                       {{ prefecture.name }}
                     </template>
                   </FooterAreaIndex>
                 </li>
-                <li slot="area"
+                <li slot="item"
                     v-for="city in prefecture.city"
                     :key="city.name"
                 >
@@ -152,8 +152,9 @@
     },
     data() {
       return {
-        isIcon: true,
-        iskako: true,
+        isRounded: true,
+        isColon: true,
+        isParentheses: true,
         nowYear: '',
         logoAlt: '風俗情報ぴゅあらば',
         footerNavLinks: [
@@ -166,11 +167,11 @@
           { name: '運営者情報', path: '/' },
         ],
         informationLinks: [
-          { name: '掲載お申込み', path: '/', class: 'rounded' },
-          { name: '掲載についてのお問い合わせ', path: '/', class: 'rounded' },
-          { name: '店舗様ログイン', path: '/', class: 'rounded' },
+          { name: '掲載お申込み', path: '/' },
+          { name: '掲載についてのお問い合わせ', path: '/' },
+          { name: '店舗様ログイン', path: '/' },
         ],
-        searchbusiness: [
+        searchShop: [
           { name: 'デリヘル店の主要エリア' },
           { name: 'ホテヘル店の主要エリア' },
           { name: '店舗型ヘルス店の主要エリア' },
@@ -264,7 +265,7 @@
 
 <style lang="scss" scoped>
   .footer-common {
-    border-color: theme('colors.border-dark-gray');
+    border-color: theme('colors.base');
     background-color: theme('colors.bg-gray');
     @apply relative border-solid border-t-2 border-b-2;
   }
@@ -292,15 +293,14 @@
     @apply flex flex-wrap;
   }
 
+  .footer-common .information-list .fz16 {
+    font-size: theme('fontSize.fz16');
+    line-height: theme('lineHeight.lh16');
+  }
+
   .footer-common .icon {
     color: theme('colors.accent');
     @apply mr-4;
-  }
-
-  .footer-common .rounded {
-    border-radius: theme('borderRadius.rounded');
-    font-size: theme('fontSize.fz16');
-    line-height: theme('lineHeight.lh16');
   }
 
   .footer-common .copyright {
@@ -319,8 +319,7 @@
   }
 
   .footer-common hr {
-    margin: 16px 0;
-    border-top-width: 2px;
-    border-color: #D8D8D8;
+    border-color: theme('colors.border-horizontalrule');
+    @apply my-16 border-t-2;
   }
 </style>

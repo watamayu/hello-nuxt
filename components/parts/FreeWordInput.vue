@@ -1,6 +1,8 @@
 <template>
   <p class="free-word-input">
-    <input type="text" :placeholder="placeholder">
+    <input type="text"
+           :placeholder="placeholder"
+    >
   </p>
 </template>
 
@@ -27,7 +29,6 @@
    font-size: theme('fontSize.fz14');
    line-height: theme('lineHeight.lh20');
    @apply w-full h-full flex items-center px-20 border-solid border-2  text-center bg-white;
-
     border: 2px solid #E2E2E2;
     color: #333;
     outline: 0;
