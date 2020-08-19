@@ -19,11 +19,11 @@ export default {
 
   css: [
     'reset.css',
-    'element-ui/lib/theme-chalk/index.css',
+    // 'element-ui/lib/theme-chalk/index.css',
   ],
 
   plugins: [
-    '~plugins/element-ui',
+    // '~plugins/element-ui',
   ],
 
   components: true,
@@ -41,14 +41,14 @@ export default {
     // vendor: ['element-ui'],
 
     // CSSの外部ファイル化
-    extractCSS: true,
+    // extractCSS: true,
 
     // チャンクの分割設定
-    optimization: {
-      splitChunks: {
-        name: true
-      }
-    },
+    // optimization: {
+    //   splitChunks: {
+    //     name: true
+    //   }
+    // },
 
     // 生成ファイルの命名規則
     filenames: {
@@ -67,7 +67,7 @@ export default {
 
     // CSS圧縮の設定
     purgeCSS: {
-      mode: 'postcss'
+      // mode: 'postcss'
     },
 
     extend (config, ctx) {
@@ -86,10 +86,10 @@ export default {
 
   // 静的ファイルとしてビルド時の書き出し先（この場合は`/dist/`以下に書き出される）
    generate: {
-    dir: 'dist/'
+    dir: 'dist'
   },
 
   axios: {
-    baseURL: 'https://fir-test-54c02.firebaseio.com',
+    // baseURL: 'https://fir-test-54c02.firebaseio.com',
   },
 }
