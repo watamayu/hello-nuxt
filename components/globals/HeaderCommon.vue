@@ -1,7 +1,7 @@
 <template>
   <header class="header-common">
 
-    <div style="display: flex;
+    <!-- <div style="display: flex;
     height: 25px;
     align-items: center;">
 
@@ -27,7 +27,7 @@
         </li>
       </ul>
 
-    </div>
+    </div> -->
 
 
 
